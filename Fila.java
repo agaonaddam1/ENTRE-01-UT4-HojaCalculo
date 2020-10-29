@@ -36,7 +36,7 @@ public class Fila
         this.gastos = gastos;
 
     }
-    
+
     /**
      * accesor para el id de la fila
      */
@@ -44,7 +44,6 @@ public class Fila
         return this.id;
 
     }
-
 
     /**
      * accesor para la fecha
@@ -77,14 +76,14 @@ public class Fila
         return this.ingresos - this.gastos;
 
     }
-    
+
     /**
      * obtiene una copia idéntica a la fila actual.
      * La fecha que incluye la fila duplicada también es una copia
      * 
      */
     public Fila duplicar() {
-       return new Fila(this.id, this.fecha, this.ingresos, this.gastos);
+        return new Fila(this.id, this.fecha, this.ingresos, this.gastos);
 
     }
 
@@ -93,11 +92,13 @@ public class Fila
      * (leer enunciado)
      */
     public String toString() {
-       
-        return String.format("%8s %15s %15.2f€ %15.2f€ %**+15.2f€",id, fecha, ingresos, gastos, getBeneficio());
+        if (getBeneficio()<0){
+            return String.format("%8s %15s %15.2f€ %15.2f€ %+15.2f€ **",id, fecha, ingresos, gastos, getBeneficio());
+        }
+        else {
+            return String.format("%8s %15s %15.2f€ %15.2f€ %+15.2f€",id, fecha, ingresos, gastos, getBeneficio());
+        }
 
     }
-
-     
 
 }
