@@ -169,11 +169,11 @@ public class HojaCalculo
      */
     public String toString() {
         
-        return String.format("%-8s\n %23s %15s %15s %15s\n" + 
+        return String.format("%-8s\n %23s %16s %16s %16s\n" + 
         fila1.toString() + "\n" + 
         fila2.toString() + "\n" +
         fila3.toString() + "\n-------------------------------------------------------------------------------------------\n" +
-        "%38.2f€ %15.2f€ %+15.2f€",
+        "%40.2f€ %15.2f€ %+15.2f€",
         getNombre(),
         "FECHA", "INGRESOS","GASTOS","BENEFICIO",
         getTotalIngresos(), getTotalGastos(),getBeneficio());
@@ -188,7 +188,7 @@ public class HojaCalculo
      * Al duplicar la hoja se duplicarán también las filas que contenga
      */
     public HojaCalculo duplicarHoja() {
-        HojaCalculo hoja = new HojaCalculo("Duplicada" + this.getNombre());
+        HojaCalculo hoja = new HojaCalculo("Duplicada " + this.getNombre());
         hoja.addFila(this.fila1);
         hoja.addFila(this.fila2);
         hoja.addFila(this.fila3);

@@ -93,10 +93,10 @@ public class Fila
      */
     public String toString() {
         if (getBeneficio()<0){
-            return String.format("%8s %15s %15.2f€ %15.2f€ %+15.2f€ **",id, fecha, ingresos, gastos, getBeneficio());
+            return String.format("%8s %15s %15.2f€ %15.2f€ % 15.2f€ **",id, fecha, ingresos, gastos, getBeneficio());
         }
         else {
-            return String.format("%8s %15s %15.2f€ %15.2f€ %+15.2f€",id, fecha, ingresos, gastos, getBeneficio());
+            return String.format("%8s %15s %15.2f€ %15.2f€ % 15.2f€",id, fecha, ingresos, gastos, getBeneficio());
         }
 
     }
