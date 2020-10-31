@@ -132,8 +132,12 @@ public class HojaCalculo
     public double getTotalIngresos() {
         double total = 0;
         total += fila1.getIngresos();
-        total += fila2.getIngresos();
-        total += fila3.getIngresos();
+        if (fila2 != null){
+            total += fila2.getIngresos();
+        }
+        if (fila3 != null){
+            total += fila3.getIngresos();
+        }
         return total;
     }
 
@@ -144,8 +148,12 @@ public class HojaCalculo
     public double getTotalGastos() {
         double total = 0;
         total += fila1.getGastos();
-        total += fila2.getGastos();
-        total += fila3.getGastos();
+        if (fila2 != null){
+            total += fila2.getGastos();
+        }
+        if (fila3 != null){
+            total += fila3.getGastos();
+        }
         return total;
 
     }
@@ -157,8 +165,12 @@ public class HojaCalculo
     public double getBeneficio() {
         double total = 0;
         total += fila1.getBeneficio();
-        total += fila2.getBeneficio();
-        total += fila3.getBeneficio();
+        if (fila2 != null){
+            total += fila2.getBeneficio();   
+        }
+        if (fila3 != null){
+            total += fila3.getBeneficio();
+        }
         return total;
 
     }
@@ -168,18 +180,35 @@ public class HojaCalculo
      * con el formato exacto que indica el enunciado
      */
     public String toString() {
-        
-        return String.format("%-8s\n %23s %16s %16s %16s\n" + 
-        fila1.toString() + "\n" + 
-        fila2.toString() + "\n" +
-        fila3.toString() + "\n-------------------------------------------------------------------------------------------\n" +
-        "%40.2f€ %15.2f€ %+15.2f€",
-        getNombre(),
-        "FECHA", "INGRESOS","GASTOS","BENEFICIO",
-        getTotalIngresos(), getTotalGastos(),getBeneficio());
-        
-        
-
+        if (fila2 == null){
+            return String.format("%-8s\n %23s %16s %16s %16s\n" + 
+                fila1.toString() +
+                "\n-------------------------------------------------------------------------------------------\n" +
+                "%40.2f€ %15.2f€ % 15.2f€",
+                getNombre(),
+                "FECHA", "INGRESOS","GASTOS","BENEFICIO",
+                getTotalIngresos(), getTotalGastos(),getBeneficio());  
+        }
+        else if (fila3 == null){
+            return String.format("%-8s\n %23s %16s %16s %16s\n" + 
+                fila1.toString() + "\n" + 
+                fila2.toString() +
+                "\n-------------------------------------------------------------------------------------------\n" +
+                "%40.2f€ %15.2f€ % 15.2f€",
+                getNombre(),
+                "FECHA", "INGRESOS","GASTOS","BENEFICIO",
+                getTotalIngresos(), getTotalGastos(),getBeneficio());
+        }
+        else {
+            return String.format("%-8s\n %23s %16s %16s %16s\n" + 
+                fila1.toString() + "\n" + 
+                fila2.toString() + "\n" +
+                fila3.toString() + "\n-------------------------------------------------------------------------------------------\n" +
+                "%40.2f€ %15.2f€ % 15.2f€",
+                getNombre(),
+                "FECHA", "INGRESOS","GASTOS","BENEFICIO",
+                getTotalIngresos(), getTotalGastos(),getBeneficio()); 
+        }
     }
 
     /**
@@ -190,8 +219,12 @@ public class HojaCalculo
     public HojaCalculo duplicarHoja() {
         HojaCalculo hoja = new HojaCalculo("Duplicada " + this.getNombre());
         hoja.addFila(this.fila1);
-        hoja.addFila(this.fila2);
-        hoja.addFila(this.fila3);
+        if (fila2 != null){
+            hoja.addFila(this.fila2);
+        }
+        if (fila3 != null){
+            hoja.addFila(this.fila3);
+        }
         return hoja;
     }
 
