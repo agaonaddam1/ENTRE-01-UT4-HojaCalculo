@@ -180,35 +180,23 @@ public class HojaCalculo
      * con el formato exacto que indica el enunciado
      */
     public String toString() {
+        String str = String.format("%-8s\n %23s %16s %16s %16s\n",getNombre(),
+                "FECHA", "INGRESOS","GASTOS","BENEFICIO");
         if (fila2 == null){
-            return String.format("%-8s\n %23s %16s %16s %16s\n" + 
-                fila1.toString() +
-                "\n-------------------------------------------------------------------------------------------\n" +
-                "%40.2f€ %15.2f€ % 15.2f€",
-                getNombre(),
-                "FECHA", "INGRESOS","GASTOS","BENEFICIO",
-                getTotalIngresos(), getTotalGastos(),getBeneficio());  
+            str += fila1.toString();  
         }
         else if (fila3 == null){
-            return String.format("%-8s\n %23s %16s %16s %16s\n" + 
-                fila1.toString() + "\n" + 
-                fila2.toString() +
-                "\n-------------------------------------------------------------------------------------------\n" +
-                "%40.2f€ %15.2f€ % 15.2f€",
-                getNombre(),
-                "FECHA", "INGRESOS","GASTOS","BENEFICIO",
-                getTotalIngresos(), getTotalGastos(),getBeneficio());
+            str += fila1.toString() + "\n" + 
+            fila2.toString();
         }
-        else {
-            return String.format("%-8s\n %23s %16s %16s %16s\n" + 
-                fila1.toString() + "\n" + 
-                fila2.toString() + "\n" +
-                fila3.toString() + "\n-------------------------------------------------------------------------------------------\n" +
-                "%40.2f€ %15.2f€ % 15.2f€",
-                getNombre(),
-                "FECHA", "INGRESOS","GASTOS","BENEFICIO",
-                getTotalIngresos(), getTotalGastos(),getBeneficio()); 
+        else { 
+            str += fila1.toString() + "\n" + 
+            fila2.toString() + "\n" +
+            fila3.toString();
         }
+        str += String.format("\n-------------------------------------------------------------------------------------------\n" +
+            "%40.2f€ %15.2f€ % 15.2f€",getTotalIngresos(), getTotalGastos(),getBeneficio());
+        return str;
     }
 
     /**
